@@ -2,9 +2,6 @@
 
 A simple and efficient weather app built with **MVVM** design pattern, **Hilt** for dependency injection, **Clean Architecture** principles, **Retrofit** for API calls, **Room Database** for caching city information, and **Lottie** animation for a smooth loading experience.
 
-# Video
-![App Demo](https://github.com/osawant023/WeatherWise/blob/master/weather_sample_video.gif)
-
 ## Features
 - **MVVM Design Pattern**: The app uses the Model-View-ViewModel (MVVM) architecture, which separates the UI (View) from the business logic (ViewModel) and data (Model).
 - **Hilt for Dependency Injection**: **Hilt** is used to provide dependencies in a clean and efficient way, allowing for better code scalability and easier testing.
@@ -49,6 +46,12 @@ A simple and efficient weather app built with **MVVM** design pattern, **Hilt** 
 - Android Studio 4.0 or higher
 - Java 8 or higher
 - Internet connection (for API requests)
+
+# APK 
+![APK](https://github.com/osawant023/WeatherWise/blob/master/weather-app.apk)
+
+# Video
+![App Demo](https://github.com/osawant023/WeatherWise/blob/master/weather_sample_video.gif)
 
 ### Installation
 
