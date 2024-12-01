@@ -8,7 +8,7 @@ A simple and efficient weather app built with **MVVM** design pattern, **Hilt** 
 - **Clean Architecture**: Follows the principles of Clean Architecture to separate concerns, ensuring that the code is modular, testable, and maintainable.
 - **Retrofit for API Calls**: **Retrofit** is used to make network requests to fetch weather data from a REST API.
 - **Room Database Caching**: The app caches the weather information of searched cities locally using **Room Database** so that previously searched city data can be loaded quickly, even without an active internet connection.
-- **Data Refresh**: Users can refresh the page to get updated weather data. The app checks if the data is out of date and fetches the latest data from the remote server.
+- **Swipe Refresh**: Users can refresh the page to get updated weather data. The app checks if the data is out of date and fetches the latest data from the remote server.
 - **Lottie Animation for Loading**: A **Lottie** animation is used as a simple loader while the data is being fetched from the network or local database.
 
 ## How it Works
