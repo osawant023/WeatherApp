@@ -11,7 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.app.weatherapp.R
 import com.app.weatherapp.databinding.ActivityMainBinding
 import com.app.weatherapp.databinding.LayoutContainerWeatherDetailsBinding
@@ -20,6 +23,7 @@ import com.app.weatherapp.domain.utill.ScreenState
 import com.app.weatherapp.presentation.weather_screen.view_model.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -69,9 +73,10 @@ class WeatherHomeActivity : AppCompatActivity() {
 
     private fun initObserver() {
         lifecycleScope.launch {
-            viewModel.response.stateIn(lifecycleScope)
+            viewModel.response.flowWithLifecycle(lifecycle)
                 .collectLatest {
                     viewModel.fetchUpdatedData = false
+                    binding.swipeRefresh.isRefreshing = false
                     setData(it)
                 }
         }
@@ -86,11 +91,14 @@ class WeatherHomeActivity : AppCompatActivity() {
                     binding.clMain.isVisible = !binding.txtNotingFound.isVisible
                     if (data.error == null) {
                         updateUi(data)
+                    } else {
+                        updateErrorMessage(getString(R.string.label_no_info_found))
                     }
                 }
             }
 
             is ScreenState.Error -> {
+                updateErrorMessage(screenState.message)
                 showLoading(isLoading = false)
                 binding.clMain.isVisible = false
                 binding.txtNotingFound.isVisible = true
@@ -99,7 +107,13 @@ class WeatherHomeActivity : AppCompatActivity() {
             ScreenState.Loading -> {
                 showLoading(isLoading = true)
             }
+
+            else -> {}
         }
+    }
+
+    private fun updateErrorMessage(message: String) {
+        binding.txtNotingFound.text = message
     }
 
     private fun showLoading(isLoading: Boolean) {

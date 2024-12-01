@@ -10,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Url
 import java.util.concurrent.TimeUnit
-import kotlin.math.log
 
 interface ApiService {
     @GET

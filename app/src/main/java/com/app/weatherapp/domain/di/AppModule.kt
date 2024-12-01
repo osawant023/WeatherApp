@@ -5,6 +5,7 @@ import com.app.weatherapp.data.local_storage.AppDatabase
 import com.app.weatherapp.data.network_client.ApiService
 import com.app.weatherapp.data.network_client.NetworkClient
 import com.app.weatherapp.domain.repository.RepoWeather
+import com.app.weatherapp.domain.utill.NetworkUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +29,13 @@ object AppModule {
             .build()
     }
 
+
+    @Singleton
+    @Provides
+    fun provideNetworkUtil(@ApplicationContext context: Context): NetworkUtil {
+        return NetworkUtil(context)
+    }
+
     @Singleton
     @Provides
     fun provideRemoteNetworkClient(): ApiService {
@@ -36,7 +44,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideTasksRemoteDataSource(database: AppDatabase, remote: ApiService): RepoWeather {
-        return RepoWeather(database, remote)
+    fun provideTasksRemoteDataSource(networkUtil: NetworkUtil,database: AppDatabase, remote: ApiService): RepoWeather {
+        return RepoWeather(networkUtil ,database, remote)
     }
 }
