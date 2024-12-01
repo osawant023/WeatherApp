@@ -2,7 +2,8 @@
 
 A simple and efficient weather app built with **MVVM** design pattern, **Hilt** for dependency injection, **Clean Architecture** principles, **Retrofit** for API calls, **Room Database** for caching city information, and **Lottie** animation for a smooth loading experience.
 
-![App Video](https://github.com/osawant023/WeatherWise/blob/master/weather_sample_video.mp4)
+# Video
+https://github.com/osawant023/WeatherWise/blob/master/weather_sample_video.mp4
 
 ## Features
 - **MVVM Design Pattern**: The app uses the Model-View-ViewModel (MVVM) architecture, which separates the UI (View) from the business logic (ViewModel) and data (Model).
