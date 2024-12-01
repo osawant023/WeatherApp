@@ -62,6 +62,7 @@ class WeatherHomeActivity : AppCompatActivity() {
     }
 
     private fun initSearch() {
+        binding.layoutSearch.edtSearch.hint = "Search location"
         binding.layoutSearch.edtSearch.setOnEditorActionListener { textView, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 viewModel.query = binding.layoutSearch.edtSearch.text.toString()

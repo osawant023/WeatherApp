@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">WeatherWise</string>
     <string name="label_back_press_msg">Press back once again to close app.</string>
     <string name="search">Search</string>
     <string name="label_humidity">Humidity</string>
