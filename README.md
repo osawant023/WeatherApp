@@ -48,7 +48,7 @@ A simple and efficient weather app built with **MVVM** design pattern, **Hilt** 
 - Internet connection (for API requests)
 
 # APK 
-![APK](https://github.com/osawant023/WeatherWise/blob/master/weather-app.apk "download")
+[DOWNLOAD APK](https://github.com/osawant023/WeatherWise/blob/master/weather-app.apk)
 
 # Video
 ![App Demo](https://github.com/osawant023/WeatherWise/blob/master/weather_sample_video.gif)
