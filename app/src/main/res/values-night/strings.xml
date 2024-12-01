@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_no_info_found">No information Found!\n Try with different location</string>
+</resources>

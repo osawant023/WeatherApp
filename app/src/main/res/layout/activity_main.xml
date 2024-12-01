@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    tools:context=".presentation.weather_screen.view.WeatherHomeActivity">
+
+    <include
+        android:id="@+id/layoutSearch"
+        layout="@layout/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/screen_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutSearch">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/ivWeather"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:src="@drawable/ic_sunny"
+                        app:layout_constraintDimensionRatio="H,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtLocationName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/font_semibold"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/txt_color_black"
+                        android:textSize="@dimen/_28ssp"
+                        app:layout_constraintEnd_toEndOf="@id/ivWeather"
+                        app:layout_constraintStart_toStartOf="@id/ivWeather"
+                        app:layout_constraintTop_toBottomOf="@id/ivWeather"
+                        tools:text="Hyderabad" />
+
+                    <TextView
+                        android:id="@+id/txtTemperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/font_medium"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/txt_color_black"
+                        android:textSize="@dimen/_55ssp"
+                        app:layout_constraintEnd_toEndOf="@id/ivWeather"
+                        app:layout_constraintStart_toStartOf="@id/ivWeather"
+                        app:layout_constraintTop_toBottomOf="@id/txtLocationName"
+                        tools:text="31" />
+
+                    <ImageView
+                        android:id="@+id/ivNavigation"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:src="@drawable/ic_navigation"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtLocationName"
+                        app:layout_constraintStart_toEndOf="@+id/txtLocationName"
+                        app:layout_constraintTop_toBottomOf="@+id/ivWeather" />
+
+                    <LinearLayout
+                        android:id="@+id/linTiles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintTop_toBottomOf="@id/txtTemperature">
+
+                        <include
+                            android:id="@+id/layoutHumidity"
+                            layout="@layout/layout_container_weather_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1" />
+
+                        <include
+                            android:id="@+id/layoutCloudy"
+                            layout="@layout/layout_container_weather_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_weight="1" />
+
+
+                    </LinearLayout>
+
+                    <include
+                        android:id="@+id/layoutTime"
+                        layout="@layout/layout_container_weather_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/linTiles" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieLoader"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/lottie_loader" />
+
+                <TextView
+                    android:id="@+id/txtNotingFound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/font_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/label_no_info_found"
+                    android:textColor="@color/txt_color_black"
+                    android:textSize="@dimen/_15ssp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

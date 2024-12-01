@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="label_back_press_msg">Press back once again to close app.</string>
+    <string name="search">Search</string>
+    <string name="label_humidity">Humidity</string>
+    <string name="label_condition">Condition</string>
+    <string name="label_time">Time</string>
+    <string name="label_no_info_found">No information Found!\n Try with different location</string>
+</resources>
